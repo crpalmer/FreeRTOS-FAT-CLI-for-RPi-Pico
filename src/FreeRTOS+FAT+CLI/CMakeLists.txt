@@ -35,7 +35,7 @@ target_sources(FreeRTOS+FAT+CLI INTERFACE
 target_link_libraries(FreeRTOS+FAT+CLI INTERFACE
         cmsis_core
         FreeRTOS-Kernel
-        FreeRTOS-Kernel-Heap4
+#        FreeRTOS-Kernel-Heap4  -- This is isn't necessary to build and should be the user's choice
         hardware_adc
         hardware_clocks
         hardware_dma
