@@ -119,6 +119,9 @@ void unmount(const char *name) {
     }
     FF_SDDiskDelete(pxDisk);
 }
+
+#if ffconfigREMOVABLE_MEDIA
+
 void eject(const char *const name) {
     sd_card_t *sd_card_p = sd_get_by_name(name);
     if (!sd_card_p) {
@@ -140,6 +143,9 @@ void eject(const char *const name) {
     }
     //	sd_card_deinit(pDrv);
 }
+
+#endif
+
 
 void getFree(FF_Disk_t *pxDisk, uint64_t *pFreeMB, unsigned *pFreePct) {
     FF_Error_t xError;
