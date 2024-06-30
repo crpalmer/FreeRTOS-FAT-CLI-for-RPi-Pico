@@ -27,7 +27,9 @@ extern "C" {
 bool format(const char *devName);
 bool mount(const char *devName);
 void unmount(const char *devName);
+#if ffconfigREMOVABLE_MEDIA
 void eject(const char *name);
+#endif
 void getFree(FF_Disk_t *pxDisk, uint64_t *pFreeMB, unsigned *pFreePct);
 FF_Error_t ff_set_fsize( FF_FILE *pxFile ); // Make Filesize equal to the FilePointer
 int mkdirhier(char *path);
