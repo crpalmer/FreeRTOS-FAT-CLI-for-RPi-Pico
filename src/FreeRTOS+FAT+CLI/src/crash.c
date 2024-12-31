@@ -78,6 +78,8 @@ const crash_info_t *crash_handler_get_info() {
     return NULL;
 }
 
+#if 0
+
 // void vApplicationStackOverflowHook(TaskHandle_t xTask
 // __attribute__((unused)), signed char *pcTaskName){
 
@@ -115,6 +117,8 @@ void vApplicationMallocFailedHook(void) {
     reset();
     __builtin_unreachable();
 }
+
+#endif
     
 __attribute__((noreturn))
 void error_handler(void) {

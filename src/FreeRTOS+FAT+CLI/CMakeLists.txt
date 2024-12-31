@@ -25,7 +25,7 @@ target_sources(FreeRTOS+FAT+CLI INTERFACE
         src/crc.c
         src/ff_utils.c
         src/file_stream.c
-        src/freertos_callbacks.c
+#        src/freertos_callbacks.c -- this should be handled by the application!
         src/FreeRTOS_strerror.c
         src/FreeRTOS_time.c
         src/my_debug.c
