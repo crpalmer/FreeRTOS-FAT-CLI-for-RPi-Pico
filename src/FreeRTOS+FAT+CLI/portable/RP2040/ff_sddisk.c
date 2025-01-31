@@ -55,6 +55,7 @@ specific language governing permissions and limitations under the License.
 #include "sd_card_constants.h"
 //
 #include "ff_sddisk.h"
+#include "ff_file.h"
 
 #define HUNDRED_64_BIT 100ULL
 #define SECTOR_SIZE 512UL
@@ -185,6 +186,7 @@ BaseType_t FF_SDDiskUnmount(FF_Disk_t *pxDisk) {
     if (!pxDisk->xStatus.bIsMounted) return FF_ERR_NONE;
     sd_card_t *sd_card_p = pxDisk->pvTag;
     const char *name = sd_card_p->device_name;
+#if ffconfigREMOVABLE_MEDIA
     FF_PRINTF("Invalidating %s\n", name);
     int32_t rc = FF_Invalidate(pxDisk->pxIOManager);
     if (0 == rc)
@@ -193,6 +195,7 @@ BaseType_t FF_SDDiskUnmount(FF_Disk_t *pxDisk) {
         DBG_PRINTF("%ld handles were invalidated\n", rc);
     else
         DBG_PRINTF("%ld: probably an invalid FF_IOManager_t pointer\n", rc);
+#endif
     FF_FlushCache(pxDisk->pxIOManager);
     sd_card_p->sync(sd_card_p);
     FF_PRINTF("Unmounting %s\n", name);
