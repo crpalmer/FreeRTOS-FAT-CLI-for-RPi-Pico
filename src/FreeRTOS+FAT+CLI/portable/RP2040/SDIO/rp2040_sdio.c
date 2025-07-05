@@ -53,7 +53,7 @@
 
 
 // Force everything to idle state
-static sdio_status_t rp2040_sdio_stop();
+static sdio_status_t rp2040_sdio_stop(sd_card_t *);
 
 /*******************************************************
  * Checksum algorithms
